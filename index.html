@@ -33,6 +33,16 @@ button{
     width:340px;
     margin-top:20px;
 }
+#buttonRow{
+    position:fixed;
+    bottom:40px;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:0 80px;
+    box-sizing:border-box;
+}
 .hidden{display:none}
 #noBtn{background:#444;margin-left:15px}
 
@@ -62,10 +72,11 @@ button{
         Will you be my girlfriend once again,<br>
         lets restart our journey once again like never before ?
         </h2>
-        <div>
+        <div id="buttonRow">
             <button onclick="yesClick()">YES 💖</button>
             <button id="noBtn">NO 🙈</button>
         </div>
+    </div>
     </div>
 
     <h2 id="result"></h2>
