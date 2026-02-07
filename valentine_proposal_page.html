@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    background:linear-gradient(135deg,#ff4e8a,#ff9acb);
+    color:white;
+    overflow:hidden;
+}
+.container{max-width:600px;padding:20px}
+button{
+    margin-top:30px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#ff0055;
+    color:white;
+}
+#proposal img{
+    width:340px;
+    margin-top:20px;
+}
+.hidden{display:none}
+#noBtn{background:#444;position:relative;margin-left:15px}
+
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:24px;
+    animation:rise 5s linear infinite;
+}
+@keyframes rise{
+    from{transform:translateY(0);opacity:1}
+    to{transform:translateY(-110vh);opacity:0}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="text">I want to tell you something important...</h1>
+    <button id="nextBtn" onclick="nextStep()">Tap to continue ❤️</button>
+
+    <div id="proposal" class="hidden">
+        <!-- Save your uploaded image as proposal.png in the same folder -->
+        <img src="proposal.png" alt="proposal">
+        <h2>
+        Rachana Singh, I love you.<br>
+        Will you be my girlfriend once again,<br>
+        lets restart our journey once again like never before ?
+        </h2>
+        <button onclick="yesClick()">YES 💖</button>
+        <button id="noBtn">NO 🙈</button>
+    </div>
+
+    <h2 id="result"></h2>
+</div>
+
+<script>
+let step=0;
+function nextStep(){
+    step++;
+    if(step==1) document.getElementById('text').innerHTML="The day I met you — 29‑12‑2025 ❤️";
+    else if(step==2) document.getElementById('text').innerHTML="I didn't know you would become so special to me...";
+    else if(step==3){
+        document.getElementById('text').style.display='none';
+        document.getElementById('nextBtn').style.display='none';
+        document.getElementById('proposal').classList.remove('hidden');
+    }
+}
+
+function yesClick(){
+    document.getElementById('proposal').innerHTML="<h2>You just made me the happiest person ❤️</h2>";
+}
+
+const noBtn=document.getElementById('noBtn');
+noBtn.addEventListener('mouseover',()=>{
+    const x=Math.random()*300;
+    const y=Math.random()*200;
+    noBtn.style.position='absolute';
+    noBtn.style.left=x+'px';
+    noBtn.style.top=y+'px';
+});
+
+setInterval(()=>{
+    const h=document.createElement('div');
+    h.className='heart';
+    h.style.left=Math.random()*window.innerWidth+'px';
+    h.innerHTML='❤️';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+},500);
+</script>
+
+</body>
+</html>
