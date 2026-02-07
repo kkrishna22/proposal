@@ -11,16 +11,16 @@ body{
     font-family:'Poppins',sans-serif;
     display:flex;
     justify-content:center;
-    align-items:center;
-    height:100vh;
+    align-items:flex-start;
+    min-height:100vh;
     text-align:center;
     background:linear-gradient(135deg,#ff4e8a,#ff9acb);
     color:white;
-    overflow:hidden;
+    overflow-x:hidden;
 }
-.container{max-width:600px;padding:20px}
+.container{max-width:650px;padding:30px}
 button{
-    margin-top:30px;
+    margin-top:20px;
     padding:15px 30px;
     font-size:18px;
     border:none;
@@ -34,8 +34,9 @@ button{
     margin-top:20px;
 }
 .hidden{display:none}
-#noBtn{background:#444;position:relative;margin-left:15px}
+#noBtn{background:#444;margin-left:15px}
 
+/* floating hearts */
 .heart{
     position:absolute;
     bottom:-20px;
@@ -55,15 +56,16 @@ button{
     <button id="nextBtn" onclick="nextStep()">Tap to continue ❤️</button>
 
     <div id="proposal" class="hidden">
-        <!-- Save your uploaded image as proposal.png in the same folder -->
         <img src="proposal.png" alt="proposal">
         <h2>
         Rachana Singh, I love you.<br>
         Will you be my girlfriend once again,<br>
         lets restart our journey once again like never before ?
         </h2>
-        <button onclick="yesClick()">YES 💖</button>
-        <button id="noBtn">NO 🙈</button>
+        <div>
+            <button onclick="yesClick()">YES 💖</button>
+            <button id="noBtn">NO 🙈</button>
+        </div>
     </div>
 
     <h2 id="result"></h2>
@@ -79,6 +81,7 @@ function nextStep(){
         document.getElementById('text').style.display='none';
         document.getElementById('nextBtn').style.display='none';
         document.getElementById('proposal').classList.remove('hidden');
+        window.scrollTo(0, document.body.scrollHeight);
     }
 }
 
@@ -86,15 +89,17 @@ function yesClick(){
     document.getElementById('proposal').innerHTML="<h2>You just made me the happiest person ❤️</h2>";
 }
 
+// moving NO button
 const noBtn=document.getElementById('noBtn');
 noBtn.addEventListener('mouseover',()=>{
     const x=Math.random()*300;
     const y=Math.random()*200;
-    noBtn.style.position='absolute';
+    noBtn.style.position='relative';
     noBtn.style.left=x+'px';
     noBtn.style.top=y+'px';
 });
 
+// floating hearts
 setInterval(()=>{
     const h=document.createElement('div');
     h.className='heart';
